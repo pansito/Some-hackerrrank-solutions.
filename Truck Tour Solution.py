@@ -18,15 +18,15 @@ It returns a int with position for the starting point that wil allow to complete
 """
 def truckTour(petrolpumps):
     for i in range(len(petrolpumps)):
-        if petrolpumps[i][0]>=petrolpumps[i][1]:
-            j = (i+1)%len(petrolpumps)
-            gas = petrolpumps[i][0] - petrolpumps[i][1]
+        if petrolpumps[i][0]>=petrolpumps[i][1]: #This makes the first comparison, if the gas quantity is bigger/equal than the distance to the next station it will proceed
+            j = (i+1)%len(petrolpumps) #Since we need to complete the cicle, the module sum is ued to avoid out of lenght pointing. 
+            gas = petrolpumps[i][0] - petrolpumps[i][1] #Here we save the reamining gas after arriving to the next station. 
             while j != i:
-                if  gas+ petrolpumps[j][0] < petrolpumps[j][1]:
+                if  gas+ petrolpumps[j][0] < petrolpumps[j][1]: #This compares if the gas that have in addition to the provided if enough to arrivo to next station.
                     break
                 else: 
-                    gas = gas -petrolpumps[j][1] + petrolpumps[j][0]
-                    j+=1
+                    gas = gas -petrolpumps[j][1] + petrolpumps[j][0] #Here we save, again, the remaining gas. and them we move to the following station till we 
+                    j+=1                                             # Complete the cycle. 
                     j%= len(petrolpumps)
             if j== i:
                     return i
